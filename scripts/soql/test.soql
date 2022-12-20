@@ -1,0 +1,10 @@
+SELECT Label, QualifiedApiName FROM FieldDefinition WHERE EntityDefinition.QualifiedApiName = 'ServiceResource' 
+SELECT Label, QualifiedApiName FROM FieldDefinition WHERE EntityDefinition.QualifiedApiName = 'ServiceTerritory' 
+
+SELECT Id, Name, ResourceType, RoleText__c FROM ServiceResource WHERE name LIKE '%山中%' AND IsActive = True
+
+List<BookingInvitation__mdt> bi = BookingInvitation__mdt.getAll().values();
+System.debug(bi);
+BookingInvitation__mdt biMdt = BookingInvitation__mdt.getInstance('BookingInvitationData');
+System.debug(biMdt);
+System.debug(biMdt.InvitationURL__c);

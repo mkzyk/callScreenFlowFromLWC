@@ -1,0 +1,43 @@
+<template>
+    <div class="slds-m-bottom_small">
+        <lightning-input type="text"
+           value={searchValue}
+           label="サービスリソース名 (面談担当者名)"
+           onchange={searchKeyword}>
+        </lightning-input>
+    </div>
+
+    <lightning-button 
+        label="検索"
+        onclick={handleSearchKeyword}
+        variant="brand"
+        style="display: grid; width: 100%;">
+    </lightning-button>
+    
+    <div class="slds-m-top_medium">
+        <lightning-datatable
+            key-field="id"
+            data={srRecord}
+            columns={columns}
+            onrowselection={getSelected}
+            max-row-selection="1">
+        </lightning-datatable>
+    </div>
+
+    <lightning-button class="slds-m-top_medium"
+        label="選択したリソースの面談URLを取得する"
+        onclick={isRowSelected}
+        variant="brand"
+        style="display: grid; width: 100%;">
+    </lightning-button>
+
+    <template if:true={renderFlow}>
+        <div class="slds-m-top_medium">
+            <lightning-flow
+                flow-api-name={flowApiName}
+                flow-input-variables={flowInputVariables}
+                onstatuschange={handleFlowStatusChange}>
+            </lightning-flow>
+        </div>
+    </template>
+ </template>
